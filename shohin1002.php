@@ -53,7 +53,7 @@ function OdrCalc(pric,p1){
 			$thinph[$i]=$selectData["photo"];
 		    $thinnm[$i]=mb_convert_encoding($thinnm[$i],"SJIS","EUC");
 		}
-		$dcnt=$i; echo $dcnt;
+		$dcnt=$i; //echo $dcnt;
 	}
 ?>
 <body>
@@ -68,11 +68,17 @@ function OdrCalc(pric,p1){
 
 <?php	
 	for ($i=1;$i<=$dcnt;$i++)	{	
-		print("<tr><td><input type=\"hidden\" name=\"hinno[]\" value=\"".$thinno[$i]."\">".$thinnm[$i]."</td><td><img src=\"./".$thinph[$i]."\" width=100></td><td>".$thinpr[$i]."</td>");
+		print("<tr>");
+			if($i%2)	{
+				print("<td bgcolor=\"#c0c0c0\">");
+			}
+			else	{
+				print("<td>");
+			}
+		print("<input type=\"hidden\" name=\"hinno[]\" value=\"".$thinno[$i]."\"><b>".$thinnm[$i]."</b></td><td><img src=\"./".$thinph[$i]."\" width=100></td><td><font color=\"red\"><em><b>".$thinpr[$i]."</b></em></font></td>");
 		
 		$j=$i-1;
 		print("<td><input type=\"text\" name=\"sodr[]\" onblur=\"OdrCalc(".$thinpr[$i].",".$j.")\" size=\"10\"></td>");
-	//	print("<td><input type=\"hidden\" name=\"abc[]\" value=\"".$thinpr[$i]."\"></td>");
 		print("<td><input type=\"text\" name=\"tx1[]\" size=\"10\"></td></tr>");
 		
 	}

@@ -73,16 +73,23 @@
 <tr><th>注文No</th><th>注文日時</th><th>商品名</th><th>数量</th><th>単価</th><th>金額</th></tr>
 <?php
 	for ($i=1; $i<=$dmax; $i++)		{
-	print("<tr><td>".$wodrno."</td><td>".$wwdt."</td><td>".$thinnm[$i]."</td><td>".$thinvol[$i]."</td><td>".$tttpric[$i]."</td><td>".$tamt[$i]."</td></tr>");
+		if ($i%2)	{
+			print("<tr style=\"background-color: #bce0f2\">");
+		}
+		else	{
+		print("<tr>");
+		}
+		print("<td>".$wodrno."</td><td>".$wwdt."</td><td>".$thinnm[$i]."</td><td>".$thinvol[$i]."</td><td>".$tttpric[$i]."</td><td>".$tamt[$i]."</td></tr>");
+		$topr[0]+=$tamt[$i];
 	}
 	
+	
+	print("<tr><td colspan=4 align=right></td><td>総合計:</td><td>".$topr[0]."</td></tr>");
+
+
+	print("<tr><td>お名前:</td><td colspan=5 align=right><input type=\"text\" name=\"s_tx1\" size=\"25\"></td></tr>");
+	print("<tr><td>メールアドレス:</td><td colspan=5 align=right><input type=\"text\" name=\"s_tx2\" size=\"25\"></td></tr>");
 ?>
-
-
-<tr><td colspan=4 align=right></td><td>総合計:</td><td colspan=2 align=right></td></tr>
-<tr><td>お名前:</td><td colspan=5 align=right><input type="text" name="s_tx1" size="25"></td></tr>
-<tr><td>メールアドレス:</td><td colspan=5 align=right><input type="text" name="s_tx2" size="25"></td></tr>
-
 <hr>
 
 <?php
